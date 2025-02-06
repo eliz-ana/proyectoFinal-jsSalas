@@ -43,21 +43,20 @@ function renderContactos() {
 
     contacto.appendChild(contactoForm);
 
-    // Agregar validación en tiempo real
+    // validacion del formulario
     const form = document.getElementById("contactForm");
     const inputs = form.querySelectorAll("input, textarea");
 
     form.addEventListener("submit", function (event) {
-      event.preventDefault(); // Evita el envío del formulario por defecto
+      event.preventDefault();
 
       if (!form.checkValidity()) {
-        event.stopPropagation(); // Evita propagación del evento
+        event.stopPropagation();
         form.classList.add("was-validated");
       } else {
         toastSetter("Formulario enviado !");
         form.reset();
 
-        // Remover clases de validación para que no queden verdes/rojas
         form.classList.remove("was-validated");
         inputs.forEach((input) => {
           input.classList.remove("is-valid", "is-invalid");
